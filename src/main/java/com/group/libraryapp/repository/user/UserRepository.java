@@ -2,9 +2,11 @@ package com.group.libraryapp.repository.user;
 
 import com.group.libraryapp.dto.user.response.UserResponse;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 // sql을 사용해 실제 db와의 통신 담당
 public class UserRepository {
 
