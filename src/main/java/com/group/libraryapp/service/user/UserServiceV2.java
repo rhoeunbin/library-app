@@ -39,4 +39,13 @@ public class UserServiceV2 {
         user.updateName(request.getName()); // 들어온 이름
         userRepository.save(user); // 자동으로 user의 이름이 바뀌어있는걸 확인하고 바뀐걸 기준으로 업데이트 쿼리가 날아감
     }
+
+    // 유저 삭제
+    public void deleteUser(String name){
+        User user = userRepository.findByname(name);
+        if (user == null) {
+            throw new IllegalArgumentException("User not found");
+        }
+        userRepository.delete(user); // 무조건 유저가 존재함을 의미
+    }
 }
