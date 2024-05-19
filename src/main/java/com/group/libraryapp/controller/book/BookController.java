@@ -1,5 +1,6 @@
 package com.group.libraryapp.controller.book;
 
+import com.group.libraryapp.dto.book.request.BookCreateRequest;
 import com.group.libraryapp.service.book.BookService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,7 @@ public class BookController {
 
     // 1. postMapping 만들기 + @RestController 추가
     @PostMapping("/book")
-    public void saveBook() {
-        bookService.saveBook();
+    public void saveBook(@RequestBody BookCreateRequest request) {
+        bookService.saveBook(request);
     }
 }
