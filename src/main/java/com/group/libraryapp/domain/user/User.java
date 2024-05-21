@@ -46,4 +46,16 @@ public class User {
     public void updateName(String name){
         this.name = name; // 변경되는 이름 불러옴
     }
+
+    public void loanBook(String bookName) {
+        this.userLoanHistories.add(new UserLoanHistory(this, bookName));
+    }
+
+    public void returnBook(String bookName) {
+        UserLoanHistory targetHistory = this.userLoanHistories.stream()
+                .filter(history -> history.getBookName().equals(bookName))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new); // 해당 책 내용이 없다면 에러 띄우기
+        targetHistory.doReturn();
+    }
 }
